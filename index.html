@@ -1,333 +1,252 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="html5,金尚市官服,JTRserver,金尚市,Jinshang,jinshangmcser">
-    <meta name="description" content="这是金尚市官方服务器网站分支">
-    <title>金尚市轨道交通服务器线路图 | JTR Sever Railway Map</title>
-    <!-- 使用Minecraft风格的图标 -->
-    <link rel="icon" type="image/x-icon" href="./mtr.png">
-    <!-- 额外添加不同尺寸的图标以适应各种设备 -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./mtr.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./mtr.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./mtr.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <style>
-        :root {
-            /* 定义颜色变量 */
-            --primary-color: #4CAF50;
-            --primary-dark-color: #45a049;
-            --secondary-color: #2196F3;
-            --secondary-dark-color: #0b7dda;
-            --danger-color: #f44336;
-            --danger-dark-color: #d32f2f;
-            --warning-color: #ff5722;
-            --neutral-color: #333;
-            --light-color: #f5f5f5;
-            --white-color: #fff;
-            --gray-color: #888;
-            --light-gray-color: #f2f2f2;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金尚市轨道交通服务器线路图 | JTR Sever Railway Map</title>
 
-        body {
-            font-family: 'Microsoft YaHei', sans-serif;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: var(--light-color);
-            color: var(--neutral-color);
-            position: relative;
-        }
-        #header {
-            background-color: var(--primary-color);
-            color: var(--white-color);
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            position: relative;
-        }
-        .nav {
-            display: flex;
-            justify-content: space-around;
-            background-color: var(--neutral-color);
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .nav a {
-            color: var(--white-color);
-            text-decoration: none;
-            padding: 5px 10px;
-        }
-        .nav a:hover {
-            background-color: var(--primary-color);
-            border-radius: 3px;
-        }
-        .section {
-            background-color: var(--white-color);
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .btn {
-            background-color: var(--primary-color);
-            color: var(--white-color);
-            border: none;
-            padding: 8px 16px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        .btn:hover {
-            background-color: var(--primary-dark-color);
-        }
-        .admin-btn {
-            background-color: var(--danger-color);
-        }
-        .admin-btn:hover {
-            background-color: var(--danger-dark-color);
-        }
+<!-- 图标 -->
+<link rel="icon" type="image/x-icon" href="./mtr.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./mtr.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./mtr.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./mtr.png">
 
-        /* 公告样式 */
-        .announcement {
-            background-color: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .announcement-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .announcement-date {
-            font-size: 12px;
-            color: #6c757d;
-        }
-        .announcement-author {
-            font-style: italic;
-            margin-top: 10px;
-            text-align: right;
-        }
-        .announcement-delete {
-            color: var(--danger-color);
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        .announcement-delete:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div id="header">
-        <h1>金尚市轨道交通线路图 | JTR Sever Railway Map</h1>
-        <div id="clock"></div>
-    </div>
-
-    <div class="nav">
-        <a href="#bigmap">线路大图 | Big Map</a>
-        <a href="#singleline">单独线路 | Single Line Map</a>
-        <a href="#back">返回官网 | Back To Official Website</a>
-        <a href="https://discord.gg/kVtBeyw5fm" target="_blank">加入Discord | Join Discord</a>
-    </div>
-
-    <div id="bigmap" class="section">
-        <h2>线路大图 | Big Map</h2>
-        <img src="static/png/bigmap.png" alt="线路大图" width="600" height="2009">
-
-    <div id="singleline" class="section">
-        <h2>单独线路 | Single Line Map</h2>
-        <h2>1号线 | Line 1</h2>
-        <img src="static/png/Line 1.png" alt="线路大图" width="3000" height="450">
-        <h2>2号线 | Line 2</h2>
-        <img src="static/png/Line 2.png" alt="线路大图" width="1800" height="450">
-        <h2>火车站快线 | Railway Express Line</h2>
-        <img src="static/png/Railway Express.png" alt="线路大图" width="1800" height="450">
-        <h2>公交1路 | Bus Line 1</h2>
-        <img src="static/png/Bus Line 1.png" alt="线路大图" width="1800" height="450">
-        <h2>高速铁路 | High-Speed Rail</h2>
-        <img src="static/png/High-Speed.png" alt="线路大图" width="1800" height="450">
-
-
-    <div id="back" class="section">
-        <h2>返回官网 | Back To Official Wabsite</h2>
-        <a href="https://alexsun114.github.io/www.jinshangmcser.com/" class="btn">返回 | Back</a>
-    </div>
-    <div id="admin-area" class="section" style="display: none;">
-        <h2>管理员面板</h2>
-        <div id="admin-content">
-            <h3>管理员功能</h3>
-            <button id="view-users-btn" class="btn admin-btn">查看用户列表</button>
-            <button id="manage-server-btn" class="btn admin-btn">服务器管理</button>
-            <button id="send-announcement-btn" class="btn admin-btn">发送公告</button>
-            <button id="add-points-btn" class="btn admin-btn">给用户添加积分</button>
-            
-            <div id="users-table-container" style="display: none; margin-top: 20px;">
-                <table id="users-table">
-                    <thead>
-                        <tr>
-                            <th>头像</th>
-                            <th>用户名</th>
-                            <th>邮箱</th>
-                            <th>邮箱状态</th>
-                            <th>积分</th>
-                            <th>用户类型</th>
-                            <th>注册日期</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody id="users-table-body">
-                        <!-- 用户数据将通过JavaScript动态加载 -->
-                    </tbody>
-                </table>
-            </div>
-            </div>
-        </div>
-    <div class="section">
-        <a href="#" class="btn">回到顶部 | Back To Top</a>
-    </div>
-            <!-- 页脚 -->
-    <footer class="bg-mtr-dark py-12 border-t border-mtr-orange/30">
-            <div class="mt-12 pt-6 border-t border-mtr-orange/20 text-center text-sm text-gray-500">
-                <p>2026 金尚市服务器 - 保留所有权利</p>
-                <p class="mt-1">2026 JTR Server - All Rights Reserved</p>
-            </div>
-    </footer>
-            <form id="send-announcement-form">
-            </form>
-            <p id="announcement-error" style="color: red;"></p>
-    <script>
-        // 模拟数据库 - 添加avatar字段和emailVerified字段
-        let users = [
-            { id: 1, username: 'admin', email: 'admin@shanwogou.com', password: 'admin123', 
-              isAdmin: true, points: 1000, lastCheckin: null, joinDate: '2023-01-01',
-              avatar: 'https://picsum.photos/id/169/200/200', emailVerified: true, 
-              verificationToken: 'admin1234567890', customColor: null },
-            { id: 2, username: 'testuser', email: 'user@test.com', password: 'test123', 
-              isAdmin: false, points: 200, lastCheckin: null, joinDate: '2023-06-01',
-              avatar: 'https://picsum.photos/id/175/200/200', emailVerified: false,
-              verificationToken: 'test1234567890', customColor: null }
-        ];
-
-        // 公告数据
-        let announcements = [
-            { 
-                id: 1, 
-                title: "网站公告", 
-                content: "我们的官方网站已经正式发布，欢迎前来访问！", 
-                author: "JinRui_MaoMao", 
-                date: "2025-10-20" 
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                mtr: {
+                    dark: '#1E1E1E',
+                    gray: '#2D2D2D',
+                    orange: '#FF7A00',
+                    light: '#FFE0B2',
+                    white: '#FFFFFF',
+                }
             },
-            { 
-                id: 1, 
-                title: "网站公告", 
-                content: "我们的官方网站已经编辑完成，即将正式发布！", 
-                author: "JinRui_MaoMao", 
-                date: "2025-10-19" 
-            },
-            { 
-                id: 2, 
-                title: "NaN", 
-                content: "NaN", 
-                author: "NaN", 
-                date: "NaN" 
+            fontFamily: {
+                sans: ['Microsoft YaHei', 'ui-sans-serif', 'system-ui'],
             }
-        // 当前登录用户
-        let currentUser = null;
-
-        // DOM元素
-        const clockElement = document.getElementById('clock');
-        const loginBtn = document.getElementById('login-btn');
-        const registerBtn = document.getElementById('register-btn');
-        const logoutBtn = document.getElementById('logout-btn');
-        const checkinBtn = document.getElementById('checkin-btn');
-        const loginModal = document.getElementById('login-modal');
-        const registerModal = document.getElementById('register-modal');
-        const avatarModal = document.getElementById('avatar-modal');
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
-        const loginError = document.getElementById('login-error');
-        const registerError = document.getElementById('register-error');
-        const userPanelButton = document.getElementById('user-panel-button');
-        const userPanel = document.getElementById('user-panel');
-        const closeUserPanel = document.getElementById('close-user-panel');
-        const loginRegisterContainer = document.getElementById('login-register-container');
-        const panelUsername = document.getElementById('panel-username');
-        const panelEmail = document.getElementById('panel-email');
-        const panelBadges = document.getElementById('panel-badges');
-        const panelPoints = document.getElementById('panel-points');
-        const userAvatarImg = document.getElementById('user-avatar-img');
-        const panelAvatarImg = document.getElementById('panel-avatar-img');
-        const adminArea = document.getElementById('admin-area');
-        const viewUsersBtn = document.getElementById('view-users-btn');
-        const usersTableContainer = document.getElementById('users-table-container');
-        const usersTableBody = document.getElementById('users-table-body');
-        const addPointsBtn = document.getElementById('add-points-btn');
-        const addPointsContainer = document.getElementById('add-points-container');
-        const pointsUserSelect = document.getElementById('points-user-select');
-        const pointsAmount = document.getElementById('points-amount');
-        const confirmAddPoints = document.getElementById('confirm-add-points');
-        const addPointsMessage = document.getElementById('add-points-message');
-        const avatarPreview = document.getElementById('avatar-preview');
-        const avatarSelector = document.getElementById('avatar-selector');
-        const avatarUpload = document.getElementById('avatar-upload');
-        const avatarUploadMessage = document.getElementById('avatar-upload-message');
-        const saveAvatarBtn = document.getElementById('save-avatar-btn');
-        const avatarBtn = document.getElementById('avatar-btn');
-        const rememberMeCheckbox = document.getElementById('remember-me');
-        const announcementsContainer = document.getElementById('announcements-container');
-        const sendAnnouncementBtn = document.getElementById('send-announcement-btn');
-        const sendAnnouncementModal = document.getElementById('send-announcement-modal');
-        const sendAnnouncementForm = document.getElementById('send-announcement-form');
-        const announcementTitle = document.getElementById('announcement-title');
-        const announcementContent = document.getElementById('announcement-content');
-        const announcementError = document.getElementById('announcement-error');
-        
-        // 修改用户名相关元素
-        const changeUsernameBtn = document.getElementById('change-username-btn');
-        const changeUsernameModal = document.getElementById('change-username-modal');
-        const changeUsernameForm = document.getElementById('change-username-form');
-        const currentPasswordInput = document.getElementById('current-password');
-        const newUsernameInput = document.getElementById('new-username');
-        const usernameError = document.getElementById('username-error');
-        
-        // 邮箱验证相关元素
-        const emailVerificationStatus = document.getElementById('email-verification-status');
-        const emailVerificationModal = document.getElementById('email-verification-modal');
-        const verifyEmailDisplay = document.getElementById('verify-email-display');
-        const resendVerificationEmailBtn = document.getElementById('resend-verification-email');
-        const verificationStatusElement = document.getElementById('verification-status');
-        
-        // 颜色选择器相关元素
-        const colorOptions = document.querySelectorAll('.color-option');
-        const customColorPicker = document.getElementById('custom-color-picker');
-        const colorResetBtn = document.getElementById('color-reset-btn');
-
-        // 时钟功能
-        function updateClock() {
-            const now = new Date();
-            clockElement.textContent = now.toLocaleString();
         }
-        setInterval(updateClock, 1000);
-        updateClock();
-    </script>
+    }
+}
+</script>
+<style>
+/* 公告样式示例 */
+.announcement { @apply bg-mtr-light border border-mtr-orange text-mtr-dark p-4 rounded-lg mb-6; }
+.announcement-title { @apply font-bold flex justify-between items-center mb-2; }
+.announcement-date { @apply text-sm text-gray-400; }
+.announcement-author { @apply italic text-right mt-2; }
+.announcement-delete { @apply text-red-600 cursor-pointer ml-2 hover:underline; }
+</style>
+</head>
+<body class="bg-mtr-dark text-white font-sans relative pt-20">
+<div id="home" style="scroll-margin-top: 80px;"></div>
+
+<!-- 页头 -->
+<header class="bg-mtr-gray p-6 rounded-lg shadow-md text-center mb-6">
+    <h1 class="text-3xl font-bold" id="page-title">金尚市轨道交通线路图 | JTR Sever Railway Map</h1>
+    <div id="clock" class="mt-2 text-gray-400"></div>
+</header>
+
+<!-- 导航栏 -->
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-mtr-dark/90 backdrop-blur-md shadow-md">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    
+    <!-- 左侧：Logo -->
+    <a href="#home" class="flex items-center space-x-3">
+      <img src="./static/png/logo.png" alt="MTR标志" class="h-10">
+      <span id="logo-text" class="text-xl font-bold text-mtr-orange"
+            data-lang-zh="金尚市轨交线路图网站"
+            data-lang-en="JTR RailwayMap Website">
+        金尚市轨交线路图网站
+      </span>
+    </a>
+
+    <!-- 中间：导航菜单 -->
+    <div class="hidden md:flex space-x-3">
+      <a href="#bigmap" id="nav-bigmap" class="text-white hover:bg-mtr-orange px-3 py-1 rounded">线路大图 | Big Map</a>
+      <a href="#singleline" id="nav-singleline" class="text-white hover:bg-mtr-orange px-3 py-1 rounded">单独线路 | Single Line Map</a>
+      <a href="#back-website" id="nav-back" class="text-white hover:bg-mtr-orange px-3 py-1 rounded">返回官网 | Back To Official Website</a>
+      <a href="https://discord.gg/kVtBeyw5fm" id="jdc" class="text-white hover:bg-mtr-orange px-3 py-1 rounded">加入Discord | Join Discord</a>
+    </div>
+
+    <!-- 右侧：语言切换 -->
+    <div class="relative inline-block text-left">
+      <button id="language-btn" class="bg-mtr-orange hover:bg-orange-600 px-3 py-1 rounded font-semibold text-sm">
+        语言 | Language
+      </button>
+      <div id="language-menu" class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-mtr-gray ring-1 ring-black ring-opacity-5 hidden">
+        <div class="py-1">
+          <a href="#" data-lang="zh" class="block px-4 py-2 text-white hover:bg-mtr-orange">中文</a>
+          <a href="#" data-lang="en" class="block px-4 py-2 text-white hover:bg-mtr-orange">English</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 移动端菜单按钮 -->
+    <button class="md:hidden text-2xl text-mtr-orange" id="menuToggle">
+      <i class="fa fa-bars"></i>
+    </button>
+    
+  </div>
+</nav>
+
+<!-- 线路大图 -->
+<section id="bigmap" class="bg-mtr-gray p-6 rounded-lg shadow mb-6">
+    <h2 class="text-2xl font-bold mb-4" id="bigmap-title">线路大图 | Big Map</h2>
+    <img src="static/png/bigmap.png" alt="线路大图" class="w-full max-w-[800px] mx-auto rounded-lg shadow">
+</section>
+
+<!-- 单独线路 -->
+<section id="singleline" class="bg-mtr-gray p-6 rounded-lg shadow mb-6">
+    <h2 class="text-2xl font-bold mb-4" id="singleline-title">单独线路 | Single Line Map</h2>
+
+    <h3 class="text-xl font-semibold mb-2" id="line1-title">1号线 | Line 1</h3>
+    <img src="static/png/Line 1.png" alt="1号线" class="w-full max-w-[800px] mx-auto rounded-lg shadow mb-4">
+
+    <h3 class="text-xl font-semibold mb-2" id="line2-title">2号线 | Line 2</h3>
+    <img src="static/png/Line 2.png" alt="2号线" class="w-full max-w-[800px] mx-auto rounded-lg shadow mb-4">
+
+    <h3 class="text-xl font-semibold mb-2" id="express-title">火车站快线 | Railway Express Line</h3>
+    <img src="static/png/Railway Express.png" alt="快线" class="w-full max-w-[800px] mx-auto rounded-lg shadow mb-4">
+
+    <h3 class="text-xl font-semibold mb-2" id="bus1-title">公交1路 | Bus Line 1</h3>
+    <img src="static/png/Bus Line 1.png" alt="公交1路" class="w-full max-w-[800px] mx-auto rounded-lg shadow mb-4">
+
+    <h3 class="text-xl font-semibold mb-2" id="highspeed-title">高速铁路 | High-Speed Rail</h3>
+    <img src="static/png/High-Speed.png" alt="高速铁路" class="w-full max-w-[800px] mx-auto rounded-lg shadow">
+</section>
+
+<!-- 返回官网 -->
+<section id="back-website" class="bg-mtr-gray p-6 rounded-lg shadow mb-6 text-center">
+    <h2 class="text-2xl font-bold mb-4" id="back-website-title">返回官网 | Back To Official Website</h2>
+    <a href="https://alexsun114.github.io/www.jinshangmcser.com/" id="back-btn" class="bg-mtr-orange hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold">返回 | Back</a>
+</section>
+
+
+<!-- 页脚 -->
+<footer class="bg-mtr-dark py-8 border-t border-mtr-orange/30">
+    <div class="text-center text-sm text-gray-400">
+        <p>2026 金尚市服务器 - 保留所有权利</p>
+        <p class="mt-1">2026 JTR Server - All Rights Reserved</p>
+    </div>
+</footer>
+
+<script>
+// 时钟
+const clockElement = document.getElementById('clock');
+function updateClock() {
+    const now = new Date();
+    clockElement.textContent = now.toLocaleString();
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+    // ---------------- 平滑滚动 ----------------
+ function smoothScrollTo(targetSelector, duration = 500) {
+    const target = document.querySelector(targetSelector);
+    if (!target) return;
+
+    const navbarHeight = document.getElementById('navbar').offsetHeight;
+    const targetY = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+    const startY = window.pageYOffset;
+    const distance = targetY - startY;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+
+        // 使用缓动函数（easeInOutCubic）
+        const ease = progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+        window.scrollTo(0, startY + distance * ease);
+
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+
+// 给导航栏的锚点链接绑定平滑滚动
+document.querySelectorAll('#navbar a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); // 阻止默认跳转
+        const targetId = this.getAttribute('href'); 
+        smoothScrollTo(targetId, 600); // 调用平滑滚动
+    });
+});
+
+// 下拉菜单显示/隐藏
+const langBtn = document.getElementById('language-btn');
+const langMenu = document.getElementById('language-menu');
+langBtn.addEventListener('click', () => {
+    langMenu.classList.toggle('hidden');
+});
+
+// 切换语言功能
+const links = document.querySelectorAll('#language-menu a');
+links.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const lang = link.getAttribute('data-lang');
+        localStorage.setItem('userLang', lang);
+        updateLanguage(lang);
+        langMenu.classList.add('hidden'); // 点击后关闭下拉
+    });
+});
+
+// 语言切换函数
+function updateLanguage(lang) {
+    if (lang === 'en') {
+        document.getElementById('page-title').textContent = 'JTR Sever Railway Map';
+        document.getElementById('bigmap-title').textContent = 'Big Map';
+        document.getElementById('singleline-title').textContent = 'Single Line Map';
+        document.getElementById('line1-title').textContent = 'Line 1';
+        document.getElementById('line2-title').textContent = 'Line 2';
+        document.getElementById('express-title').textContent = 'Railway Express Line';
+        document.getElementById('bus1-title').textContent = 'Bus Line 1';
+        document.getElementById('highspeed-title').textContent = 'High-Speed Rail';
+        document.getElementById('back-btn').textContent = 'Back';
+        document.getElementById('nav-bigmap').textContent = 'Big Map';
+        document.getElementById('nav-singleline').textContent = 'Single Line Map';
+        document.getElementById('back-website-title').textContent = 'Back To Official Website';
+        document.getElementById('jdc').textContent = 'Join Discoed';
+        document.getElementById('nav-back').textContent = 'Back To Official Website';
+        document.getElementById('logo-text').textContent = 'JTR RailwayMap Website';
+        langBtn.textContent = '语言';
+    } else {
+        document.getElementById('page-title').textContent = '金尚市轨道交通线路图';
+        document.getElementById('bigmap-title').textContent = '线路大图';
+        document.getElementById('singleline-title').textContent = '单独线路';
+        document.getElementById('line1-title').textContent = '1号线';
+        document.getElementById('line2-title').textContent = '2号线';
+        document.getElementById('express-title').textContent = '火车站快线';
+        document.getElementById('bus1-title').textContent = '公交1路';
+        document.getElementById('highspeed-title').textContent = '高速铁路';
+        document.getElementById('back-website-title').textContent = '返回官网';
+        document.getElementById('back-btn').textContent = '返回';
+        document.getElementById('nav-bigmap').textContent = '线路大图';
+        document.getElementById('nav-singleline').textContent = '单独线路';
+        document.getElementById('nav-back').textContent = '返回官网';
+        document.getElementById('jdc').textContent = '加入 Discoed';
+        document.getElementById('nav-back').textContent = '返回官网';
+        document.getElementById('logo-text').textContent = '金尚市轨交线路图网站';
+        langBtn.textContent = 'Language';
+    }
+}
+
+// 页面加载时初始化语言
+updateLanguage(localStorage.getItem('userLang') || 'zh');
+</script>
+
 </body>
 </html>
-
-
-
-
-
